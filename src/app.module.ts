@@ -5,7 +5,7 @@ import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/compre-facil'),
+    MongooseModule.forRoot('mongodb+srv://brunodin:tlwr541g@cluster0.wyvff7p.mongodb.net/?retryWrites=true&w=majority'),
     UsersModule,
     TasksModule,
   ],
