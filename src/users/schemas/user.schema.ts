@@ -12,8 +12,14 @@ export class User {
   @Prop({ required: true, unique: true })
   email: string;
 
+  @Prop({ required: true, unique: true })
+  uid: string;
+
   @Prop({ required: true })
   sector: string;
+
+  @Prop({ required: true })
+  jobTitle: string;
 
   @Prop({ required: true, select: false })
   password: string;

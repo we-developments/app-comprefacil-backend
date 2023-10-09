@@ -1,5 +1,19 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Put,
+  Delete,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBody,
+  ApiParam,
+} from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
@@ -11,7 +25,10 @@ export class UsersController {
 
   @Post()
   @ApiOperation({ summary: 'Create user' })
-  @ApiResponse({ status: 201, description: 'The user has been successfully created.'})
+  @ApiResponse({
+    status: 201,
+    description: 'The user has been successfully created.',
+  })
   @ApiBody({ type: CreateUserDto })
   async create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -24,6 +41,18 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('uid/:uid')
+  @ApiOperation({ summary: 'List a user by Uid' })
+  @ApiResponse({ status: 200, description: 'Sucessful operation' })
+  @ApiParam({
+    name: 'uid',
+    required: true,
+    description: 'Uid of user in firebase',
+  })
+  async findByUid(@Param('uid') uid: string) {
+    return this.usersService.findByUid(uid);
+  }
+
   @Get(':id')
   @ApiOperation({ summary: 'Get a user by id' })
   @ApiResponse({ status: 200, description: 'Successful operation.' })
@@ -34,7 +63,10 @@ export class UsersController {
 
   @Put(':id')
   @ApiOperation({ summary: 'Update a user by id' })
-  @ApiResponse({ status: 200, description: 'The user has been successfully updated.'})
+  @ApiResponse({
+    status: 200,
+    description: 'The user has been successfully updated.',
+  })
   @ApiParam({ name: 'id', required: true, description: 'ID of the user' })
   @ApiBody({ type: UpdateUserDto })
   async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
@@ -43,7 +75,10 @@ export class UsersController {
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a user by id' })
-  @ApiResponse({ status: 200, description: 'The user has been successfully deleted.'})
+  @ApiResponse({
+    status: 200,
+    description: 'The user has been successfully deleted.',
+  })
   @ApiParam({ name: 'id', required: true, description: 'ID of the user' })
   async delete(@Param('id') id: string) {
     return this.usersService.delete(id);

@@ -1,6 +1,11 @@
-import { IsString, IsDate, IsOptional, IsArray, IsMongoId } from 'class-validator';
+import {
+  IsString,
+  IsDate,
+  IsOptional,
+  IsArray,
+  IsMongoId,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-
 
 export class CreateTaskDto {
   @IsString()
@@ -23,9 +28,12 @@ export class CreateTaskDto {
 
   @IsOptional()
   @IsString({ each: true })
-  @ApiProperty({ description: 'The proof images for the task.', required: false })
+  @ApiProperty({
+    description: 'The proof images for the task.',
+    required: false,
+  })
   readonly proofImages?: string[];
-  
+
   @IsOptional()
   @IsString({ each: true })
   @ApiProperty({ description: 'The status of the task.', required: false })

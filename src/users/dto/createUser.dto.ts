@@ -1,4 +1,10 @@
-import { IsString, IsEmail, IsNumber, IsOptional, IsBoolean } from 'class-validator';
+import {
+  IsString,
+  IsEmail,
+  IsNumber,
+  IsOptional,
+  IsBoolean,
+} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDto {
@@ -11,8 +17,16 @@ export class CreateUserDto {
   readonly email: string;
 
   @IsString()
+  @ApiProperty({ description: 'The uid by firebase auth' })
+  readonly uid: string;
+
+  @IsString()
   @ApiProperty({ description: 'The sector of the user.' })
   readonly sector: string;
+
+  @IsString()
+  @ApiProperty({ description: 'The jobTitle of the user.' })
+  readonly jobTitle: string;
 
   @IsString()
   @ApiProperty({ description: 'The password of the user.' })
@@ -20,7 +34,11 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsBoolean()
-  @ApiProperty({ description: 'Indicates if the user is an admin.', required: false })
+  @ApiProperty({
+    description: 'Indicates if the user is an admin.',
+    required: false,
+    default: false,
+  })
   readonly isAdmin?: boolean;
 
   @IsNumber()
@@ -29,12 +47,19 @@ export class CreateUserDto {
 
   @IsOptional()
   @IsBoolean()
-  @ApiProperty({ description: 'Indicates if the user is active.', required: false })
+  @ApiProperty({
+    description: 'Indicates if the user is active.',
+    required: false,
+    default: false,
+  })
   readonly isActive?: boolean;
 
   @IsOptional()
   @IsString()
-  @ApiProperty({ description: 'The profile picture of the user.', required: false })
+  @ApiProperty({
+    description: 'The profile picture of the user.',
+    required: false,
+  })
   readonly profilePicture?: string;
 
   @IsString()
