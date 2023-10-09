@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Positions, PositionsDocument } from './schemas/positions.schema';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { UpdatePositionDto } from './dto/updatePosition.dto';
+import { CreatePositionDto } from './dto/createPosition.dto';
 
 @Injectable()
 export class PositionsService {
@@ -10,7 +12,7 @@ export class PositionsService {
     private positionsModel: Model<PositionsDocument>,
   ) {}
 
-  async create(createPositionDto: any): Promise<Positions> {
+  async create(createPositionDto: CreatePositionDto): Promise<Positions> {
     const createPosition = new this.positionsModel(createPositionDto);
     return createPosition.save();
   }
@@ -23,7 +25,10 @@ export class PositionsService {
     return this.positionsModel.findById(id).exec();
   }
 
-  async update(id: string, updatePositionDto: any): Promise<Positions> {
+  async update(
+    id: string,
+    updatePositionDto: UpdatePositionDto,
+  ): Promise<Positions> {
     return this.positionsModel.findByIdAndUpdate(id, updatePositionDto, {
       new: true,
     });
