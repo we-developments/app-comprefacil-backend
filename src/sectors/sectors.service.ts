@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Sectors, SectorsDocument } from './schemas/positions.schema';
+
 import { Model } from 'mongoose';
 import { CreateSectorDto } from './dto/createSector.dto';
 import { UpdateSectorDto } from './dto/updateSector.dto';
+import { Sectors, SectorsDocument } from './schemas/sectors.schema';
 
 @Injectable()
 export class SectorsService {
