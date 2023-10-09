@@ -15,7 +15,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { createPositionDto } from './dto/createPosition.dto';
+import { CreatePositionDto } from './dto/createPosition.dto';
 import { UpdatePositionDto } from './dto/updatePosition.dto';
 
 @ApiTags('positions')
@@ -29,8 +29,8 @@ export class PositionsController {
     status: 201,
     description: 'The task has been successfully created.',
   })
-  @ApiBody({ type: createPositionDto })
-  async create(@Body() createPositionDto: createPositionDto) {
+  @ApiBody({ type: CreatePositionDto })
+  async create(@Body() createPositionDto: CreatePositionDto) {
     return this.positionsService.create(createPositionDto);
   }
 
@@ -44,7 +44,7 @@ export class PositionsController {
   @Get(':id')
   @ApiOperation({ summary: 'Get a position by ID' })
   @ApiResponse({ status: 200, description: 'Successful operation' })
-  @ApiParam({ name: 'id', required: true, description: 'ID of de position' })
+  @ApiParam({ name: 'id', required: true, description: 'ID of the position' })
   async findOne(@Param('id') id: string) {
     return this.positionsService.findOne(id);
   }
