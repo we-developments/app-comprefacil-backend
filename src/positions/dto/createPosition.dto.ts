@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDate, IsOptional, IsString } from 'class-validator';
 
-export class createPositionDto {
+export class CreatePositionDto {
   @IsString()
   @ApiProperty({ description: 'The name of de position' })
   readonly name: string;
