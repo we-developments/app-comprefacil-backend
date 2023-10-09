@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { TasksModule } from './tasks/tasks.module';
 import { PositionsModule } from './positions/positions.module';
+import { SectorsModule } from './sectors/sectors.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { PositionsModule } from './positions/positions.module';
     TasksModule,
     PositionsModule,
     PositionsModule,
+    SectorsModule,
   ],
   controllers: [],
   providers: [],
