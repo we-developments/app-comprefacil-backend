@@ -28,10 +28,6 @@ export class CreateUserDto {
   @ApiProperty({ description: 'The jobTitle of the user.' })
   readonly jobTitle: string;
 
-  @IsString()
-  @ApiProperty({ description: 'The password of the user.' })
-  readonly password: string;
-
   @IsOptional()
   @IsBoolean()
   @ApiProperty({
@@ -61,8 +57,4 @@ export class CreateUserDto {
     required: false,
   })
   readonly profilePicture?: string;
-
-  @IsString()
-  @ApiProperty({ description: 'The role of the user.' })
-  readonly role: string;
 }
