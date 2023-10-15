@@ -21,9 +21,6 @@ export class User {
   @Prop({ required: true })
   jobTitle: string;
 
-  @Prop({ required: true, select: false })
-  password: string;
-
   @Prop()
   isAdmin: boolean;
 
@@ -35,18 +32,6 @@ export class User {
 
   @Prop()
   profilePicture: string;
-
-  @Prop({ required: true })
-  role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
-
-UserSchema.pre('save', async function (next: any) {
-  if (!this.isModified('password')) {
-    return next();
-  }
-  const hashedPassword = await bcrypt.hash(this.password, 10);
-  this.password = hashedPassword;
-  return next();
-});
