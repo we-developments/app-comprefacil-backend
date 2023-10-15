@@ -79,14 +79,14 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
-  @Delete(':id')
+  @Delete(':id/:uid')
   @ApiOperation({ summary: 'Delete a user by id' })
   @ApiResponse({
     status: 200,
     description: 'The user has been successfully deleted.',
   })
   @ApiParam({ name: 'id', required: true, description: 'ID of the user' })
-  async delete(@Param('id') id: string) {
-    return this.usersService.delete(id);
+  async delete(@Param('id') id: string, @Param('uid') uid: string) {
+    return this.usersService.deleteUserFirebaseAuth({ id: id, uid: uid });
   }
 }
