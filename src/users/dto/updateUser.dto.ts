@@ -46,14 +46,6 @@ export class UpdateUserDto {
   readonly jobTitle?: string;
 
   @IsOptional()
-  @IsString()
-  @ApiProperty({
-    description: 'The updated password of the user.',
-    required: false,
-  })
-  readonly password?: string;
-
-  @IsOptional()
   @IsBoolean()
   @ApiProperty({
     description: 'Indicates if the user is an admin.',
@@ -81,12 +73,4 @@ export class UpdateUserDto {
     required: false,
   })
   readonly profilePicture?: string;
-
-  @IsOptional()
-  @IsString()
-  @ApiProperty({
-    description: 'The updated role of the user.',
-    required: false,
-  })
-  readonly role?: string;
 }
