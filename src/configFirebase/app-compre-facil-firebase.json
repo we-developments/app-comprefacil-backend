@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "app-compre-facil",
+  "private_key_id": "cb972da6631c6e055185f878b12c1d6014443998",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDCii+yp+ghwXCw\nvAGU0TBecEy5EcxdfcJEImg0tZ+fTJsveqBap1Mw1JOgA+3ahbtYKJCBnCQfaz2q\nbN806BUgjll8uiSCtfFpMbX1GCslG7yrduqrBARBZm3iMLEos9Ca6UaHIFUBy/I/\nsr0Kp7d2pM8B8ot01Fll6U6lB0/0XFyTQ4rQVMPOgcGAhA5Rj3LyEtAV5qizbJWK\nTGgmwGi36E0wAkEhz+/zC0/kRY6I7MSG/+mxOTdBRCCM5KIyhS8kZiZCaNWV+UeT\ngOMQ/BsMhsYRP+TWUgrdgOkpV54W/cif10d/p0cQzpTv9VeXcFiCAoMjEqlExNL3\nEhMdjZ13AgMBAAECggEAMMKnGu4H+nH8V2gAM3dNWtZl/Jsv8J0FVMOU/+UoKarv\nWLKxP5eh++LET768XuHXJ80fD0V+LlvYXH+mYKHtLbhQSLl1TkfhRv8dPt38bnQp\n0YZgYlYC5QuR7jhLJ0sOtc1Tjqn1dJpUUU/xHxsTmorLkg7jknhpIeic/DM9gJ83\nyxsqqn51DqX8SBiC8yUXjS04D0zOWOTalfFtYAxM6PsXliaECmANgqu2OJrUKsl8\nWJUzHzX02jNnBKJW5clBkxRZTRVtEBX3ZVZeEpvTUmrZGZLGA+mTswgBPczBFJYo\nCCBwTcex2j+bnW3GTJQgE7p4UViyEa8jDcRjcGYVSQKBgQDskqtXffR7RrdrhlM4\nxxWW59rEswJut3382oMu6iE9mQOu4yDCVjeKPknvm4Ibqx434hcJ1u+hc85I2wrs\nX1T0nSC4y8ps60T17CkX17fHzERYe0UCkES//5o3h8vrm/jV0NsR3wgEiEHod0vI\nz+jAhh2Cz4uG0r7mWr4MoIcqmQKBgQDSg+EtxWtk8n9OFRvJVfSRxHdIckSNbbg6\n3uXi7ginPVhjJzAd0m18qJ6L2JHAx5qujh3T3ppn4VOhiar2vZP22t44ehM0hUkM\n9b6tQ0IZAfcdh3UIzbjUghDcidV1+dXJpy7CVk6djlT9/mEz6nSz5/AQy1OHDbG5\nkpq2uNiijwKBgAIM419GwC+xVTWhXGdJkm5UZBkAVC0Reg4O9sQZU2BtSxLg9Q+6\nH5EbKRjiiCYlPYXOd9SmAD2t+0O2YknaKapVEkuHuKFpCJf5DAIg5H7ezljV+Ksl\nBPOFC5kfnCzWlTmFLeDhxfgEFk4leoqrAqFoiCjyE4t/mBf3AV6qpYFBAoGATex5\nNtsj9Lr6uql/nphNroN97/g0PfHGRyxpBgY8d8Nya0l/OxrAYmt8PKHO2gBI1qJO\nkjWNDDTRIzN1cF4eXjsIFPnDECbiMoTorvP9jIo4sdqJTNfxud/nY+s1c7UmGL3k\nxhTyhsm/1kEKNBBuYIXTTDQnWA+OoPWOhWKI9isCgYEAoDZXLcFT17V3R81cDvYd\n0p0rITUW+ligx0lZf9T9zteR8m+zFBR6k/Ji8wSBs5qvq2V0jrYvoR/Dvn9YdO/E\nIZYCl/tp62TFe8xt7rMu8IziUkV5PUhbFfKbAlbOJazKpf15aY4XB5zjI8xgoied\nrlO0qvbtme7SDUWnQHqVuqw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-lmi17@app-compre-facil.iam.gserviceaccount.com",
+  "client_id": "113320396907272960412",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-lmi17%40app-compre-facil.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
