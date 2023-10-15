@@ -17,7 +17,9 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+    return this.userModel
+      .find({ email: { $ne: 'aplicativocomprefacil@gmail.com' } })
+      .exec();
   }
 
   async findOne(id: string): Promise<User> {
