@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './schemas/user.schema';
+import * as firebase from 'firebase-admin';
+import { CreateUserFirebaseDto } from './dto/createUserFirebase.dto';
 
 @Injectable()
 export class UsersService {
@@ -32,5 +34,21 @@ export class UsersService {
 
   async delete(id: string): Promise<User> {
     return this.userModel.findByIdAndRemove(id);
+  }
+
+  async createUserFirebaseAuth(data: CreateUserFirebaseDto) {
+    return firebase
+      .auth()
+      .createUser({
+        email: data.email,
+        password: `${
+          data.email.split('@')[0]
+        }@comprefacil${new Date().getFullYear()}`,
+      })
+      .then((response) => {
+        this.create({ ...data, uid: response.uid });
+        return;
+      })
+      .catch((err) => err);
   }
 }

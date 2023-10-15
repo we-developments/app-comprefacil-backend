@@ -17,6 +17,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/createUser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
+import { CreateUserFirebaseDto } from './dto/createUserFirebase.dto';
 
 @ApiTags('users')
 @Controller('users')
@@ -32,6 +33,11 @@ export class UsersController {
   @ApiBody({ type: CreateUserDto })
   async create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
+  }
+
+  @Post('/createFirebaseUser')
+  async createUserFirebase(@Body() createUserFirebase: CreateUserFirebaseDto) {
+    return this.usersService.createUserFirebaseAuth(createUserFirebase);
   }
 
   @Get()
