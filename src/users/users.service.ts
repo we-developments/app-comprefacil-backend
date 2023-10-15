@@ -51,4 +51,17 @@ export class UsersService {
       })
       .catch((err) => err);
   }
+
+  async deleteUserFirebaseAuth(userData) {
+    console.log(userData, 'userDataq');
+    return firebase
+      .auth()
+      .deleteUser(userData.uid)
+      .then(() => {
+        this.delete(userData.id)
+          .then((res) => res)
+          .catch((err) => err);
+      })
+      .catch((err) => err);
+  }
 }
