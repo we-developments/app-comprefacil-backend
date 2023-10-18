@@ -46,19 +46,19 @@ export class UsersService {
         }@comprefacil${new Date().getFullYear()}`,
       })
       .then((response) => {
-        this.create({ ...data, uid: response.uid });
-        return;
+        return this.create({ ...data, uid: response.uid })
+          .then((res) => res)
+          .catch((err) => err);
       })
       .catch((err) => err);
   }
 
   async deleteUserFirebaseAuth(userData) {
-    console.log(userData, 'userDataq');
     return firebase
       .auth()
       .deleteUser(userData.uid)
       .then(() => {
-        this.delete(userData.id)
+        return this.delete(userData.id)
           .then((res) => res)
           .catch((err) => err);
       })
