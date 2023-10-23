@@ -45,8 +45,8 @@ export class UsersService {
           data.email.split('@')[0]
         }@comprefacil${new Date().getFullYear()}`,
       })
-      .then((response) => {
-        return this.create({ ...data, uid: response.uid })
+      .then(async (response) => {
+        return await this.create({ ...data, uid: response.uid })
           .then((res) => res)
           .catch((err) => err);
       })
