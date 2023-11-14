@@ -13,7 +13,6 @@ export class TasksService {
     }
   
     const createdTask = new this.taskModel(createTaskDto);
-    console.log(createdTask, "aqui")
     return createdTask.save();
   }
   async findAll(): Promise<Task[]> {
