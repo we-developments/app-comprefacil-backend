@@ -31,6 +31,7 @@ export class TasksController {
   })
   @ApiBody({ type: CreateTaskDto })
   async create(@Body() createTaskDto: CreateTaskDto) {
+    console.log(createTaskDto, "aqui")
     return this.tasksService.create(createTaskDto);
   }
 

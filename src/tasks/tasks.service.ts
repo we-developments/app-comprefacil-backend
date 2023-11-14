@@ -8,10 +8,14 @@ export class TasksService {
   constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
 
   async create(createTaskDto: any): Promise<Task> {
+    if (createTaskDto.finishDate && typeof createTaskDto.finishDate === 'string') {
+      createTaskDto.finishDate = new Date(createTaskDto.finishDate);
+    }
+  
     const createdTask = new this.taskModel(createTaskDto);
+    console.log(createdTask, "aqui")
     return createdTask.save();
   }
-
   async findAll(): Promise<Task[]> {
     return this.taskModel.find().exec();
   }
