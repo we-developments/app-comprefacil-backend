@@ -1,41 +1,95 @@
-import {
-  IsString,
-  IsDate,
-  IsOptional,
-  IsArray,
-  IsMongoId,
-} from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { IsDate, IsNotEmpty, IsString, IsArray, ValidateNested, IsNumber, IsBoolean } from 'class-validator';
+import { Type } from 'class-transformer';
 
-export class CreateTaskDto {
+class ChecklistItemDto {
+  @ApiProperty()
   @IsString()
-  @ApiProperty({ description: 'The name of the task.' })
+  @IsNotEmpty()
+  readonly id: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly done: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly note: string;
+
+  @ApiProperty({ type: [String] })
+  @IsArray()
+  @IsString({ each: true })
+  readonly images: string[];
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly imagesRequired: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly title: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly obsResponsavel: string;
+}
+
+class SelectedSectorDto {
+  @ApiProperty()
+  @IsNumber()
+  @IsNotEmpty()
+  readonly id: number;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   readonly name: string;
 
-  @IsOptional()
+  @ApiProperty()
+  @IsBoolean()
+  @IsNotEmpty()
+  readonly online: boolean;
+}
+
+export class CreateTaskDto {
+  @ApiProperty()
   @IsDate()
-  @ApiProperty({ description: 'The start date of the task.', required: false })
-  readonly startDate?: Date;
+  @Type(() => Date)
+  readonly finishDate: Date;
 
-  @IsOptional()
-  @IsDate()
-  @ApiProperty({ description: 'The end date of the task.', required: false })
-  readonly endDate?: Date;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly taskDescription: string;
 
-  @IsMongoId()
-  @ApiProperty({ description: 'The responsible user for the task.' })
-  readonly responsibleUser: string;
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly taskName: string;
 
-  @IsOptional()
+  @ApiProperty({ type: [String] })
+  @IsArray()
   @IsString({ each: true })
-  @ApiProperty({
-    description: 'The proof images for the task.',
-    required: false,
-  })
-  readonly proofImages?: string[];
+  readonly selectedUsers: string[];
 
-  @IsOptional()
-  @IsString({ each: true })
-  @ApiProperty({ description: 'The status of the task.', required: false })
-  readonly status?: 'To Do' | 'In Progress' | 'Done';
+  @ApiProperty({ type: [ChecklistItemDto] })
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ChecklistItemDto)
+  readonly checklist: ChecklistItemDto[];
+
+  @ApiProperty()
+  @ValidateNested()
+  @Type(() => SelectedSectorDto)
+  readonly selectedSector: SelectedSectorDto;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly status: string;
 }

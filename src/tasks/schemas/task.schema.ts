@@ -1,27 +1,66 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
-
-export type TaskDocument = Task & Document;
+import { Document } from 'mongoose';
 
 @Schema()
-export class Task {
+export class ChecklistItem extends Document {
   @Prop({ required: true })
-  name: string;
+  id: string;
 
-  @Prop({ default: Date.now })
-  startDate: Date;
+  @Prop({ required: true })
+  done: string;
 
-  @Prop()
-  endDate: Date;
+  @Prop({ required: true })
+  note: string;
 
-  @Prop({ type: Types.ObjectId, ref: 'User' })
-  responsibleUser: Types.ObjectId;
+  @Prop({ required: true, type: [String] })
+  images: string[];
 
-  @Prop({ enum: ['To Do', 'In Progress', 'Done'], default: 'To Do' })
+  @Prop({ required: true })
+  imagesRequired: string;
+
+  @Prop({ required: true })
+  title: string;
+
+  @Prop({ required: true })
+  obsResponsavel: string;
+}
+
+export const ChecklistItemSchema = SchemaFactory.createForClass(ChecklistItem);
+
+@Schema()
+export class Task extends Document {
+  @Prop({ required: true })
+  finishDate: Date;
+
+  @Prop({ required: true })
+  taskDescription: string;
+
+  @Prop({ required: true })
+  taskName: string;
+
+  @Prop({ required: true, type: [String] })
+  selectedUsers: string[];
+
+  @Prop({ required: true, type: [ChecklistItemSchema] })
+  checklist: ChecklistItem[];
+
+  @Prop({
+    required: true,
+    type: {
+      id: { type: Number, required: true },
+      name: { type: String, required: true },
+      online: { type: Boolean, required: true }
+    }
+  })
+  selectedSector: {
+    id: number;
+    name: string;
+    online: boolean;
+  };
+
+  @Prop({ required: true })
   status: string;
-
-  @Prop()
-  proofImages: string[];
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
+export type TaskDocument = Task & Document;
