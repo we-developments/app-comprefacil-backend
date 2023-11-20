@@ -1,5 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsNotEmpty, IsString, IsArray, ValidateNested, IsNumber, IsBoolean } from 'class-validator';
+import {
+  IsDate,
+  IsNotEmpty,
+  IsString,
+  IsArray,
+  ValidateNested,
+  IsNumber,
+  IsBoolean,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 class ChecklistItemDto {
@@ -15,7 +23,6 @@ class ChecklistItemDto {
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
   readonly note: string;
 
   @ApiProperty({ type: [String] })
@@ -43,17 +50,34 @@ class SelectedSectorDto {
   @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
-  readonly id: number;
+  readonly id: string;
 
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly name: string;
+}
+
+class UserDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
   readonly name: string;
 
   @ApiProperty()
-  @IsBoolean()
+  @IsString()
   @IsNotEmpty()
-  readonly online: boolean;
+  readonly uid: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly email: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  readonly sector: string;
 }
 
 export class CreateTaskDto {
@@ -72,10 +96,11 @@ export class CreateTaskDto {
   @IsNotEmpty()
   readonly taskName: string;
 
-  @ApiProperty({ type: [String] })
+  @ApiProperty({ type: [UserDto] })
   @IsArray()
-  @IsString({ each: true })
-  readonly selectedUsers: string[];
+  @ValidateNested({ each: true })
+  @Type(() => UserDto)
+  readonly selectedUsers: UserDto[];
 
   @ApiProperty({ type: [ChecklistItemDto] })
   @IsArray()

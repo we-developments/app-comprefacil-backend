@@ -6,26 +6,42 @@ export class ChecklistItem extends Document {
   @Prop({ required: true })
   id: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   done: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   note: string;
 
-  @Prop({ required: true, type: [String] })
+  @Prop({ required: false, type: [String] })
   images: string[];
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   imagesRequired: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   title: string;
 
-  @Prop({ required: true })
+  @Prop()
   obsResponsavel: string;
 }
 
+@Schema({_id: false})
+export class User extends Document  {
+  @Prop({ required: true })
+  name: string;
+
+  @Prop({ required: true })
+  uid: string;
+
+  @Prop({ required: true })
+  email: string;
+
+  @Prop({ required: true })
+  sector: string;
+}
+
 export const ChecklistItemSchema = SchemaFactory.createForClass(ChecklistItem);
+export const UserItemSchema = SchemaFactory.createForClass(User);
 
 @Schema()
 export class Task extends Document {
@@ -38,8 +54,8 @@ export class Task extends Document {
   @Prop({ required: true })
   taskName: string;
 
-  @Prop({ required: true, type: [String] })
-  selectedUsers: string[];
+  @Prop({ type: [UserItemSchema], required: true })
+  selectedUsers: User[];
 
   @Prop({ required: true, type: [ChecklistItemSchema] })
   checklist: ChecklistItem[];
@@ -47,19 +63,18 @@ export class Task extends Document {
   @Prop({
     required: true,
     type: {
-      id: { type: Number, required: true },
+      _id: { type: String, required: true },
       name: { type: String, required: true },
-      online: { type: Boolean, required: true }
     }
   })
   selectedSector: {
-    id: number;
+    _id: string;
     name: string;
-    online: boolean;
   };
 
   @Prop({ required: true })
   status: string;
+
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);
