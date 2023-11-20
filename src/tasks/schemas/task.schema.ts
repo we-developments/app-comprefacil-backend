@@ -74,7 +74,12 @@ export class Task extends Document {
 
   @Prop({ required: true })
   status: string;
+  
+  @Prop({ default: Date.now })
+  createdAt: Date;
 
+  @Prop({ default: Date.now })
+  updatedAt: Date;
 }
 
 export const TaskSchema = SchemaFactory.createForClass(Task);

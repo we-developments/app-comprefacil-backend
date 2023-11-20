@@ -7,6 +7,7 @@ import {
   ValidateNested,
   IsNumber,
   IsBoolean,
+  IsOptional,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -117,4 +118,14 @@ export class CreateTaskDto {
   @IsString()
   @IsNotEmpty()
   readonly status: string;
+
+  @IsOptional()
+  @IsDate()
+  @ApiProperty({ description: 'the date of the created position' })
+  readonly createdAt?: Date;
+
+  @IsDate()
+  @ApiProperty({ description: 'the date of the updated position' })
+  readonly updatedAt: Date;
+
 }
