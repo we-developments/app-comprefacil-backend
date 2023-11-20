@@ -23,7 +23,6 @@ class ChecklistItemDto {
 
   @ApiProperty()
   @IsString()
-  @IsNotEmpty()
   readonly note: string;
 
   @ApiProperty({ type: [String] })

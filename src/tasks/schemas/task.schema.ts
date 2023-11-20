@@ -6,19 +6,19 @@ export class ChecklistItem extends Document {
   @Prop({ required: true })
   id: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   done: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   note: string;
 
-  @Prop({ required: true, type: [String] })
+  @Prop({ required: false, type: [String] })
   images: string[];
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   imagesRequired: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   title: string;
 
   @Prop()
