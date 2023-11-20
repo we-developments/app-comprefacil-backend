@@ -41,7 +41,6 @@ export class NotificationController {
     @Param('id') id: string,
     @Body() updateNotificationDto: UpdateNotificationDto,
   ) {
-    console.log(updateNotificationDto, id);
     return this.notificationService.update(id, updateNotificationDto);
   }
 
