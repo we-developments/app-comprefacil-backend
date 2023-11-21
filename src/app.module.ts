@@ -5,6 +5,7 @@ import { TasksModule } from './tasks/tasks.module';
 import { PositionsModule } from './positions/positions.module';
 import { SectorsModule } from './sectors/sectors.module';
 import { NotificationModule } from './notification/notification.module';
+import { SocketNotificationGateway } from './socket-notification/socket-notification.gateway';
 
 @Module({
   imports: [
@@ -18,6 +19,6 @@ import { NotificationModule } from './notification/notification.module';
     NotificationModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [SocketNotificationGateway],
 })
 export class AppModule {}
