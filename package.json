@@ -32,6 +32,7 @@
     "class-validator": "^0.14.0",
     "dotenv": "^16.3.1",
     "firebase-admin": "^11.11.0",
+    "heroku": "^8.7.1",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.2",
     "passport": "^0.6.0",
