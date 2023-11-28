@@ -20,10 +20,13 @@ export class SocketNotificationGateway
   private connectedUser: Map<string, any> = new Map();
 
   @SubscribeMessage('notificationToServer')
-  handleMessage(client: any, payload: any): void {
-    const { userId, notificationData } = payload;
-    if (notificationData) {
-      const usersToNotify: string[] = notificationData.usersReceiveNotification;
+  handleMessage(_: any, payload: any): void {
+    const { notificationData } = payload;
+
+    if (notificationData.usersReceiveNotification.length > 0) {
+      const usersToNotify: string[] = [
+        ...notificationData.usersReceiveNotification,
+      ];
 
       const connectedUsersIds = Array.from(this.connectedUser.keys());
 
@@ -33,6 +36,7 @@ export class SocketNotificationGateway
 
       usersOnlineToNotify.forEach((userId) => {
         const userSocketId = this.connectedUser.get(userId);
+
         if (userSocketId) {
           this.server
             .to(userSocketId.userIdSocket)
