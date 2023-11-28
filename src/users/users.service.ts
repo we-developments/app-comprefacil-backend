@@ -33,7 +33,7 @@ export class UsersService {
   }
 
   async delete(id: string): Promise<User> {
-    return this.userModel.findByIdAndRemove(id);
+    return this.userModel.findByIdAndRemove(id, {});
   }
 
   async createUserFirebaseAuth(data: CreateUserFirebaseDto) {
