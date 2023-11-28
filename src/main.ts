@@ -14,7 +14,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('compre-facil')
     .build();
-  
+
   app.enableCors({
     origin: '*',
     methods: 'GET, POST, PUT, DELETE',
