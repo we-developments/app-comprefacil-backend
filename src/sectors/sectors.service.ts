@@ -32,6 +32,8 @@ export class SectorsService {
   }
 
   async delete(id: string): Promise<Sectors> {
-    return this.sectorsModel.findByIdAndDelete(id);
+    return this.sectorsModel.findByIdAndDelete(id, {
+      lean: true,
+    }) as unknown as Sectors;
   }
 }

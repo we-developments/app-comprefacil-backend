@@ -33,7 +33,9 @@ export class UsersService {
   }
 
   async delete(id: string): Promise<User> {
-    return this.userModel.findByIdAndRemove(id, {});
+    return this.userModel.findByIdAndRemove(id, {
+      lean: true,
+    }) as unknown as User;
   }
 
   async createUserFirebaseAuth(data: CreateUserFirebaseDto) {
