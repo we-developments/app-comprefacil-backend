@@ -27,12 +27,11 @@ export class NotificationService {
   }
 
   async findAllByUserNotification(uid: string) {
-    return this.notificationModel.find({
-      $and: [
-        { usersReceiveNotification: { $in: [uid] } },
-        { wasReadNotification: false },
-      ],
-    });
+    return this.notificationModel
+      .find({
+        $and: [{ usersReceiveNotification: { $in: [uid] } }],
+      })
+      .sort({ createdAt: -1 });
   }
 
   findOne(id: number) {
