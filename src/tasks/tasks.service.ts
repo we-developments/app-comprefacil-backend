@@ -31,6 +31,8 @@ export class TasksService {
   }
 
   async delete(id: string): Promise<Task> {
-    return this.taskModel.findByIdAndRemove(id, {});
+    return this.taskModel.findByIdAndRemove(id, {
+      lean: true,
+    }) as unknown as Task;
   }
 }

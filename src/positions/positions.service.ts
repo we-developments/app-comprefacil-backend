@@ -35,6 +35,8 @@ export class PositionsService {
   }
 
   async delete(id: string): Promise<Positions> {
-    return this.positionsModel.findByIdAndRemove(id, {});
+    return this.positionsModel.findByIdAndRemove(id, {
+      lean: true,
+    }) as unknown as Positions;
   }
 }
