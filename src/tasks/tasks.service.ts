@@ -8,10 +8,13 @@ export class TasksService {
   constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
 
   async create(createTaskDto: any): Promise<Task> {
-    if (createTaskDto.finishDate && typeof createTaskDto.finishDate === 'string') {
+    if (
+      createTaskDto.finishDate &&
+      typeof createTaskDto.finishDate === 'string'
+    ) {
       createTaskDto.finishDate = new Date(createTaskDto.finishDate);
     }
-  
+
     const createdTask = new this.taskModel(createTaskDto);
     return createdTask.save();
   }
@@ -28,6 +31,6 @@ export class TasksService {
   }
 
   async delete(id: string): Promise<Task> {
-    return this.taskModel.findByIdAndRemove(id);
+    return this.taskModel.findByIdAndRemove(id, {});
   }
 }
